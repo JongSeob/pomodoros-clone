@@ -111,10 +111,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         onPressed: onStartPressed,
                         iconSize: 120,
                         color: Theme.of(context).cardColor,
-                        icon: Icon(
-                          isRunning
-                              ? Icons.restart_alt_outlined
-                              : Icons.play_circle_outline,
+                        icon: const Icon(
+                          Icons.play_circle_outline,
                         ),
                       ),
                     ),
