@@ -10,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  static const twentyFiveMinutes = 1500;
+  static const twentyFiveMinutes = 10;
   int totalSeconds = twentyFiveMinutes;
   bool isRunning = false;
   int totalPomodoros = 0;
@@ -49,9 +49,15 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void onResetPressed() {
+    setState(() {
+      totalSeconds = twentyFiveMinutes;
+      totalPomodoros = 0;
+    });
+  }
+
   String format(int seconds) {
     Duration duration = Duration(seconds: seconds);
-    print(duration.toString().split(".").first.substring(2));
     return duration.toString().split(".").first.substring(2);
   }
 
@@ -78,16 +84,40 @@ class _HomeScreenState extends State<HomeScreen> {
           Flexible(
             flex: 3,
             child: Center(
-              child: IconButton(
-                onPressed: isRunning ? onPuasePressed : onStartPressed,
-                iconSize: 120,
-                color: Theme.of(context).cardColor,
-                icon: Icon(
-                  isRunning
-                      ? Icons.pause_circle_outline
-                      : Icons.play_circle_outline,
-                ),
-              ),
+              child: isRunning
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        IconButton(
+                          iconSize: 120,
+                          color: Theme.of(context).cardColor,
+                          onPressed: onPuasePressed,
+                          icon: const Icon(
+                            Icons.pause_circle_outline,
+                          ),
+                        ),
+                        IconButton(
+                          iconSize: 120,
+                          color: Theme.of(context).cardColor,
+                          onPressed: onResetPressed,
+                          icon: const Icon(
+                            Icons.restore_outlined,
+                          ),
+                        ),
+                      ],
+                    )
+                  : Center(
+                      child: IconButton(
+                        onPressed: onStartPressed,
+                        iconSize: 120,
+                        color: Theme.of(context).cardColor,
+                        icon: Icon(
+                          isRunning
+                              ? Icons.restart_alt_outlined
+                              : Icons.play_circle_outline,
+                        ),
+                      ),
+                    ),
             ),
           ),
           Flexible(
