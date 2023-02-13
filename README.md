@@ -10,6 +10,8 @@ A new Flutter project.
 
 ### initial screen
 
-### running downcount
+![image](https://user-images.githubusercontent.com/12408453/218431253-8229001f-553f-466e-90ba-1c9d7b9a723f.png)
 
-### paused
+### in running downcount
+
+![image](https://user-images.githubusercontent.com/12408453/218431374-99b9a9eb-fb0b-4126-9325-1e82c2df3279.png)
